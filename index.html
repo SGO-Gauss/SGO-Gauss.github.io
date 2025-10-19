@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SGO-Gauss: Geometry–Semantics Co-Regularization for Gaussian Splatting in Indoor Reconstruction (ArXiv 2025)." />
+  <title>SGO-Gauss</title>
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <style>
+    /* Layout helpers */
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    video { width: 100%; height: auto; border-radius: 12px; }
+    figure { margin: 1.5rem 0; }
+    .author-list a { pointer-events: none; color: inherit; }
+    .card pre { white-space: pre; overflow: auto; }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="container has-text-centered">
+      <!-- Title -->
+      <p class="title is-3">Geometry-Semantics Co-Regularization for Gaussian Splatting in Indoor Reconstruction</p>
+      <p class="subtitle is-4">ArXiv 2025</p>
+
+      <!-- Authors -->
+      <p class="title is-5 mt-2 author-list">
+        <a>Haihong Xiao</a><sup>1</sup>,
+        <a>Jianan Zou</a><sup>2</sup>,
+        <a>Yanan Zhang</a><sup>1</sup>,
+        <a>Wenxiong Kang</a><sup>2</sup>,
+        <a>Ying He</a><sup>3</sup>,
+        <a>Wei Jia</a><sup>1</sup>
+      </p>
+      <p class="subtitle is-6">
+        <sup>1</sup> Hefei University of Technology &nbsp;·&nbsp;
+        <sup>2</sup> South China University of Technology &nbsp;·&nbsp;
+        <sup>3</sup> Nanyang Technological University
+      </p>
+
+      <!-- Links -->
+      <div class="is-flex is-justify-content-center is-flex-wrap-wrap">
+        <span class="icon-text mx-1 my-1">
+          <a class="button is-dark" href="#" role="button" target="_blank" rel="noopener noreferrer">
+            <span class="icon"><ion-icon name="document-outline" aria-label="Paper"></ion-icon></span>
+            <span>ArXiv</span>
+          </a>
+        </span>
+        <span class="icon-text mx-1 my-1">
+          <a class="button is-dark" href="#" role="button" target="_blank" rel="noopener noreferrer">
+            <span class="icon"><ion-icon name="logo-github" aria-label="Code"></ion-icon></span>
+            <span>Code</span>
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop has-text-centered">
+      <!-- Abstract -->
+      <p class="title is-3 mt-5">Abstract</p>
+      <p class="content is-size-6 has-text-left">
+        Recent advances in 3D Gaussian Splatting (3DGS) have significantly advanced indoor scene reconstruction, a key capability for AR/VR, robotics, and autonomous systems. However, existing methods that rely on 2D monocular priors often produce artifacts such as holes and unnatural protrusions due to insufficient or weak constraints. To address this limitation, we propose a geometry-semantics co-regularization framework that jointly optimizes geometry and semantics within 3DGS. On the geometric side, we introduce a multi-level geometric optimization strategy with two key contributions. First, inspired by neural implicit surface representations, we design a dual implicit architecture that integrates Implicit Moving Least Squares (IMLS) and Signed Distance Functions (SDFs). This structure enables bidirectional optimization via local geometric approximation and global normal constraints, improving fine-grained surface modeling. Second, we develop a view-dependent normal consistency constraint that combines 2D observations with SDF gradients to refine surface accuracy. On the semantic side, we develop a multi-view semantic consistency supervision to regularize the semantic distributions of Gaussian primitives, ensuring cross-view consistency for Gaussians corresponding to the same semantic category or instance. Extensive experiments on the Replica and MuSHRoom datasets demonstrate that our approach achieves state-of-the-art geometric reconstruction quality and rendering fidelity.
+      </p>
+
+      <!-- Method -->
+      <p class="title is-3 mt-5">Method</p>
+      <figure>
+        <img src="./results/pipline.png" alt="Overview of the proposed geometry-semantics co-regularization framework" loading="lazy" decoding="async" />
+        <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
+          <strong>Figure 2:</strong> Overall framework of our method. Our method takes a two-stage training paradigm. In the first stage, we leverage monocular geometry and semantic priors to regularize the distribution of Gaussian primitives. In the second stage, we introduce a co-learning module with dual implicit representations based on Implicit Moving Least Squares (IMLS) and Signed Distance Function (SDF) for scene modeling, coupled with a view-dependent normal consistency constraint to refine the underlying surfaces represented by Gaussians.
+        </figcaption>
+      </figure>
+
+      <!-- Results -->
+      <p class="title is-3 mt-5">Results</p>
+
+      <!-- Three looping videos -->
+      <div class="media-grid">
+        <video muted autoplay loop playsinline preload="metadata">
+          <source src="videos/bunny.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video muted autoplay loop playsinline preload="metadata">
+          <source src="videos/dino.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video muted autoplay loop playsinline preload="metadata">
+          <source src="videos/thai_2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Three images (same figure style as Method) -->
+      <div class="media-grid">
+        <figure>
+          <img src="./results/result_1.png" alt="Result image 1" loading="lazy" decoding="async" />
+          <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
+            <strong>Figure A:</strong> Result image 1.
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="./results/result_2.png" alt="Result image 2" loading="lazy" decoding="async" />
+          <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
+            <strong>Figure B:</strong> Result image 2.
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="./results/result_3.png" alt="Result image 3" loading="lazy" decoding="async" />
+          <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
+            <strong>Figure C:</strong> Result image 3.
+          </figcaption>
+        </figure>
+      </div>
+
+      
+
+      <!-- Citation -->
+      <div class="card mt-5">
+        <header class="card-header">
+          <p class="card-header-title">Citation</p>
+        </header>
+        <div class="card-content">
+<pre><code>@article{xiao2025sgo_gauss,
+  author  = {Haihong Xiao and Jianan Zou and Yanan Zhang and Wenxiong Kang and Ying He and Wei Jia},
+  title   = {Geometry-Semantics Co-Regularization for Gaussian Splatting in Indoor Reconstruction},
+  year    = {2025},
+  journal = {arXiv preprint},
+  volume  = {},
+  number  = {},
+  pages   = {},
+  url     = {}
+}
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- JS (deferred to end for better performance) -->
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- model-viewer (if needed elsewhere on the page) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+</body>
+</html>
