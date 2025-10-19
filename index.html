@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SGO-Gauss: Geometry–Semantics Co-Regularization for Gaussian Splatting in Indoor Reconstruction (ArXiv 2025)." />
   <title>SGO-Gauss</title>
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- model-viewer (if needed elsewhere on the page) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
   <style>
-    /* Layout helpers */
+    /* Optional helpers */
     .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
     video { width: 100%; height: auto; border-radius: 12px; }
     figure { margin: 1.5rem 0; }
     .author-list a { pointer-events: none; color: inherit; }
-    .card pre { white-space: pre; overflow: auto; }
   </style>
 </head>
 <body>
@@ -65,9 +68,9 @@
       <!-- Method -->
       <p class="title is-3 mt-5">Method</p>
       <figure>
-        <img src="./results/pipline.png" alt="Overview of the proposed geometry-semantics co-regularization framework" loading="lazy" decoding="async" />
+        <img src="./results/pipline.png" alt="Overview of the proposed geometry-semantics co-regularization framework" />
         <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
-          <strong>Figure 2:</strong> Overall framework of our method. Our method takes a two-stage training paradigm. In the first stage, we leverage monocular geometry and semantic priors to regularize the distribution of Gaussian primitives. In the second stage, we introduce a co-learning module with dual implicit representations based on Implicit Moving Least Squares (IMLS) and Signed Distance Function (SDF) for scene modeling, coupled with a view-dependent normal consistency constraint to refine the underlying surfaces represented by Gaussians.
+          <strong>Figure 2:</strong> Our method takes a two-stage training paradigm. In the first stage, we leverage monocular geometry and semantic priors to regularize the distribution of Gaussian primitives. In the second stage, we introduce a co-learning module with dual implicit representations based on Implicit Moving Least Squares (IMLS) and Signed Distance Function (SDF) for scene modeling, coupled with a view-dependent normal consistency constraint to refine the underlying surfaces represented by Gaussians.
         </figcaption>
       </figure>
 
@@ -77,69 +80,42 @@
       <!-- Three looping videos -->
       <div class="media-grid">
         <video muted autoplay loop playsinline preload="metadata">
-          <source src="videos/bunny.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source src="videos/out1.mp4" type="video/mp4" />
         </video>
         <video muted autoplay loop playsinline preload="metadata">
-          <source src="videos/dino.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source src="videos/out2.mp4" type="video/mp4" />
         </video>
         <video muted autoplay loop playsinline preload="metadata">
-          <source src="videos/thai_2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source src="videos/in.mp4" type="video/mp4" />
         </video>
       </div>
 
       <!-- Three images (same figure style as Method) -->
       <div class="media-grid">
         <figure>
-          <img src="./results/result_1.png" alt="Result image 1" loading="lazy" decoding="async" />
+          <img src="./results/replica_mesh.png" alt="Qualitative mesh reconstruction comparison on the Replica dataset" />
           <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
-            <strong>Figure A:</strong> Result image 1.
+            <strong>Figure 3:</strong> From left to right, we show the input image and the meshes reconstructed by SuGaR, GSDF, 2DGS, PGSR, QGS, and our method. Our approach reconstructs more complete surfaces, effectively avoiding holes and protrusions.
           </figcaption>
         </figure>
         <figure>
-          <img src="./results/result_2.png" alt="Result image 2" loading="lazy" decoding="async" />
+          <img src="./results/re4plica_rgb.png" alt="Qualitative novel view synthesis comparison on the Replica dataset" />
           <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
-            <strong>Figure B:</strong> Result image 2.
+            <strong>Figure 4:</strong> From left to right, we show the input image and the rendered images generated by SuGaR, GSDF, 2DGS, PGSR, QGS, and our method. Our method produces more visually appealing results.
           </figcaption>
         </figure>
         <figure>
-          <img src="./results/result_3.png" alt="Result image 3" loading="lazy" decoding="async" />
+          <img src="./results/mushroom.png" alt="Qualitative comparison on the MuSHRoom dataset" />
           <figcaption class="is-size-6" style="margin-top:10px; color:#555; margin-bottom:14px;">
-            <strong>Figure C:</strong> Result image 3.
+            <strong>Figure 5:</strong> On the left are the normal maps rendered by different methods; on the right are their corresponding RGB renderings. Our method produces visually superior results in both normal and RGB quality compared to other approaches.
           </figcaption>
         </figure>
       </div>
 
-      
-
-      <!-- Citation -->
-      <div class="card mt-5">
-        <header class="card-header">
-          <p class="card-header-title">Citation</p>
-        </header>
-        <div class="card-content">
-<pre><code>@article{xiao2025sgo_gauss,
-  author  = {Haihong Xiao and Jianan Zou and Yanan Zhang and Wenxiong Kang and Ying He and Wei Jia},
-  title   = {Geometry-Semantics Co-Regularization for Gaussian Splatting in Indoor Reconstruction},
-  year    = {2025},
-  journal = {arXiv preprint},
-  volume  = {},
-  number  = {},
-  pages   = {},
-  url     = {}
-}
 </code></pre>
         </div>
       </div>
     </div>
   </section>
-  <!-- JS (deferred to end for better performance) -->
-  <!-- Ionicons -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <!-- model-viewer (if needed elsewhere on the page) -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
 </body>
 </html>
